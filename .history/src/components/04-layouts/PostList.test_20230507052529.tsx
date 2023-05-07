@@ -1,0 +1,34 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import PostsList from './PostList';
+
+const posts = [
+    { id: 1, title: 'Post 1', content: 'Content 1', author: 'Author 1', date: '2021-01-01', likes: 0, youtubeUrl: '', imageUrl: '' }
+];
+
+describe('PostsList', () => {
+    test('renders all posts', () => {
+        render(
+        <Router>
+            <PostsList posts={posts} />
+        </Router>
+        );
+
+        posts.forEach((post) => {
+        const linkElement = screen.getByText(post.title);
+        expect(linkElement).toBeDefined();
+        });
+    });
+
+    test('renders "Add Post" link', () => {
+        render(
+        <Router>
+            <PostsList posts={posts} />
+        </Router>
+        );
+
+        const addPostLink = screen.getByText('Add Post');
+        expect(addPostLink).toBeDefined();
+    });
+});

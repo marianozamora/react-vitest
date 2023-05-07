@@ -1,0 +1,39 @@
+import React, { Children } from 'react'
+import ReactDOM from 'react-dom/client'
+//import React from 'react'
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+
+import Home from './components/05-pages/Home'
+import About from './components/05-pages/About'
+import Blog from './components/05-pages/About'
+import Contact from './components/05-pages/About'
+
+import Navbar from "./components/02-molecules/NavBar";
+import './index.css'
+import { Layout } from './components/04-layouts/Layout';
+import Posts from './components/05-pages/Posts'
+import PostEdit from './components/03-components/PostEditor'
+import ErrorPage from './components/05-pages/ErrorPage';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/"
+      errorElement={<ErrorPage />}
+      element={<Layout />} >
+      <Route index element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="blog" element={<Blog />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="posts/:postId" element={<Posts />} />
+      <Route path="add-post" element={<PostEdit />} />
+
+    </Route>
+  )
+)
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+      <RouterProvider router={router} />
+  </React.StrictMode>,
+)
+

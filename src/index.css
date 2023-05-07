@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+  background-color: white;
+  color: black;
+}
+
+.autocomplete{
+  background: white;
+  border: 1px solid rgb(233, 233, 233);
+  top: 48px;
+  width: 210px;
+}

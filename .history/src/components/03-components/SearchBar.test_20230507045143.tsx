@@ -1,0 +1,41 @@
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import SearchBar from './SearchBar';
+
+const mockPosts = [
+  { id: '1', title: 'Post 1' },
+  { id: '2', title: 'Post 2' },
+  { id: '3', title: 'Post 3' },
+];
+
+describe('SearchBar', () => {
+  it('displays search results when typing in the search input', () => {
+    const onSelectPost = vi.fn();
+    const { getByPlaceholderText, getByText } = render(
+      <SearchBar posts={mockPosts} onSelectPost={onSelectPost} />
+    );
+
+    const searchInput = getByPlaceholderText('Search by post title');
+
+    fireEvent.change(searchInput, { target: { value: 'Post 2' } });
+
+    expect(getByText('Post 2')).toBeDefined();
+    expect(getByText('Post 1')).not.toBeDefined();
+    expect(getByText('Post 3')).not.toBeDefined();
+  });
+
+  it('calls the onSelectPost callback when a search result is clicked', () => {
+    const onSelectPost = vi.fn();
+    const { getByPlaceholderText, getByText } = render(
+      <SearchBar posts={mockPosts} onSelectPost={onSelectPost} />
+    );
+
+    const searchInput = getByPlaceholderText('Search by post title');
+    fireEvent.change(searchInput, { target: { value: 'Post 2' } });
+
+    const searchResult = getByText('Post 2');
+    fireEvent.click(searchResult);
+
+    expect(onSelectPost).toHaveBeenCalledWith(mockPosts[1]);
+  });
+});
