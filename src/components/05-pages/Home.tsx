@@ -1,4 +1,3 @@
-import React from 'react'
 import ImageHero from '../03-components/ImageHero'
 import YouTubeVideo from '../03-components/YoutubeVideo'
 import { Link } from 'react-router-dom'

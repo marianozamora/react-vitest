@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
 import { usePostStore } from './postStore';
 

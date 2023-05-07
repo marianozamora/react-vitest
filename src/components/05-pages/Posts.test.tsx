@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import Home from './Home';
+// import { render, screen } from '@testing-library/react';
+// import Home from './Home';
 
 vi.mock('../../store/postStore', () => ({
     usePostStore: vi.fn(() => ({

@@ -1,8 +1,4 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { usePostStore } from '../../store/postStore';
-import DetailPost from './DetailPost';
+
 
 vi.mock('react-router-dom', () => ({
 useParams: vi.fn(),
@@ -21,11 +17,11 @@ describe('DetailPost', () => {
     });
 
     test('renders post details', () => {
-        const postDetail = {
-        id: '1',
-        title: 'Test Title',
-        content: 'Test Content',
-        };
+        // const postDetail = {
+        // id: '1',
+        // title: 'Test Title',
+        // content: 'Test Content',
+        // };
 
         // vi.fn().mockReturnValueOnce({ getPost: vi.fn().mockResolvedValue(postDetail) });
 

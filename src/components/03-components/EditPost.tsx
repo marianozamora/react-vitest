@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { usePostStore   } from '../../store/postStore';
-import { Post } from '../../types/interfaces';
+// import { Post } from '../../types/interfaces';
 
 const EditPost: React.FC = () => {
     const { postId } = useParams<{postId:string}>();

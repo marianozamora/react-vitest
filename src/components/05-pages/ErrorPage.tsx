@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouteError } from 'react-router-dom';
-import { Layout } from '../04-layouts/Layout';
+// import { Layout } from '../04-layouts/Layout';
 
 const ErrorPage: React.FC = () => {
     const error = useRouteError() as any;
