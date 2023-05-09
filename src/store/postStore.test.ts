@@ -56,16 +56,14 @@ describe('usePostStore', () => {
     test('gets a post by id', () => {
         const { result } = renderHook(() => usePostStore());
 
-        const postId = uuidv4();
-        const post = {
-            id: postId, title: 'Post 1', content: 'Content 1', author: '', videoUrl: '', imageUrl: '', createdAt: '', updatedAt: '', likes: 0
-        };
+        const post = { id: '1', title: 'Test Post', content: 'Hello World', author: 'John Doe', videoUrl: '', imageUrl: '', createdAt: '', updatedAt: '' };
+
         act(() => {
         result.current.addPost(post);
         });
 
-        const fetchedPost = result.current.getPost(postId);
+        const retrievedPost = result.current.getPost('1');
 
-        expect(fetchedPost).toBeUndefined();
+        expect(retrievedPost).toBeUndefined();
     });
 });

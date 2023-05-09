@@ -14,7 +14,7 @@ const PostsList: React.FC<PostsListProps> = ({ posts }) => {
                     <Link
                         key={post.id}
                         to={`/posts/${post.id}`}
-                        className="text-blue-500 hover:underline"
+                        className="hover:color-rose-500"
                     >
                         <Post
                             {...post}

@@ -1,10 +1,9 @@
 import { Post as PostType } from '../../types/interfaces';
 import Image from '../01-atoms/Image';
 
-export default function Post({ title, content }: PostType) {
+export default function Post({ title, content,author, createdAt }: PostType) {
     return (
         <div className="col-span-1 flex flex-col bg-white shadow-lg rounded-lg p-4 mb-4">
-            <h2 className="text-xl font-bold mb-2">{title}</h2>
             <Image
                 images={[
                     {
@@ -12,7 +11,14 @@ export default function Post({ title, content }: PostType) {
                         width: '100%',
                     }]}
             />
-        <p className="text-gray-700">{content}</p>
+            <div className="px-5 pb-5">
+                <h5 className="mt-5 text-xl font-semibold tracking-tight text-gray-900 ">{title}</h5>
+                <div className="flex items-center mt-2.5 mb-5">{content}</div>
+                <div className="flex items-center justify-between">
+                <span className="text-xl  text-gray-900 ">{author}</span>
+                {/* <span className="font-medium rounded-lg text-sm px-5 py-2.5 text-center ">{Date.parse(JSON.parse(createdAt)).toString()}</span> */}
+                </div>
+            </div>
         </div>
     )
 }

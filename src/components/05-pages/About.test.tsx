@@ -8,7 +8,5 @@ describe('About', () => {
         const headingElement = screen.getByRole('heading', { level: 1, name: /about/i });
         expect(headingElement).toBeDefined();
 
-        // const paragraphElement = screen.getByText(/Amet/i);
-        // expect(paragraphElement).toBeDefined();
     });
 });
