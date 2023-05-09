@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { InputForm, TextForm } from './index';
-import { fireEvent } from '@testing-library/react';
 
 describe('InputForm', () => {
     it('renders input element with label', () => {
