@@ -1,14 +1,20 @@
 // import React from "react"
-import 'index.css'
+//import 'index.css'
+interface InputProps {
+    type: string;
+    placeholder: string;
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const Input = (params: any) => {
+const Input = (params: InputProps) => {
     return (
-        <div style={{ position: "relative", margin: "0.5em auto", width: "100%" }}>
-        <input {...params} />
-        <label>
-            {params.label}
-        </label>
-        </div>);
+        <>
+        <input
+          {...params}
+          className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        </>);
 }
 
 export default Input

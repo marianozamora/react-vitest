@@ -9,10 +9,10 @@ export default function Header() {
   return (
     <div className="flex items-center justify-between ">
       <NavBar />
-          <SearchBar
-              posts={posts}
-              onSelectPost={(post) => navigate(`posts/${post.id}`)}
-          />
+      <SearchBar
+          posts={posts}
+          onSelectPost={(post) => navigate(`posts/${post.id}`)}
+      />
     </div>
   );
 }

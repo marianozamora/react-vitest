@@ -33,7 +33,7 @@ const AddPost: React.FC = () => {
             title, content,
             id: '',
             author: '',
-            videoUrl: '',
+            videoUrl,
             imageUrl: '',
             createdAt: '',
             updatedAt: '',
@@ -41,6 +41,7 @@ const AddPost: React.FC = () => {
         });
         setTitle('');
         setContent('');
+        setVideoUrl('');
         navigate('/posts');
 
     };
@@ -70,7 +71,7 @@ const AddPost: React.FC = () => {
             id="video"
             value={videoUrl}
             onChange={handleVideoChange}
-            placeholder="Enter Video Youtube"
+            placeholder="Enter Code (Ej:TiNYoe9wilU)"
             className="border border-gray-300 rounded px-2 py-1 w-full"
             />
         </div>

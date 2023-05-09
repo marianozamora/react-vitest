@@ -21,8 +21,9 @@ const EditPost: React.FC = () => {
             const fetchData = async () => {
                 const data = await getPost(postId);
                 setTitle(data?.title),
-                    setContent(data?.content)
+                setContent(data?.content)
                 setVideoUrl(data?.videoUrl)
+                console.log(data)
             };
             fetchData();
         }
@@ -35,7 +36,7 @@ const EditPost: React.FC = () => {
             content,
             title,
             author: '',
-            videoUrl: '',
+            videoUrl,
             imageUrl: '',
             createdAt: '',
             updatedAt: '',

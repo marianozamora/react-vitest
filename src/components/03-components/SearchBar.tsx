@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Post, SearchBarProps } from '../../types/interfaces';
+import Input from '../01-atoms/Input';
 
 const SearchBar: React.FC<SearchBarProps> = ({ posts, onSelectPost }) => {
     const [searchText, setSearchText] = useState('');
@@ -24,12 +25,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ posts, onSelectPost }) => {
 
     return (
         <div className="space-y-2 mr-8">
-        <input
+        <Input
           type="text"
           value={searchText}
           onChange={handleSearchTextChange}
           placeholder="Search by post title"
-          className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         {
           searchText !== '' && searchResults && searchResults.length > 0 && (

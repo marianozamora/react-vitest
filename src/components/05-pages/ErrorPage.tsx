@@ -1,9 +1,15 @@
 import React from 'react';
 import { useRouteError } from 'react-router-dom';
+import Button from '../01-atoms/Button';
 // import { Layout } from '../04-layouts/Layout';
 
+interface ErrorPageProps {
+    statusText?: string;
+    message?: string;
+}
+
 const ErrorPage: React.FC = () => {
-    const error = useRouteError() as any;
+    const error = useRouteError() as ErrorPageProps;
 
     return (
         <div id="error-page" className="flex flex-col items-center justify-center h-screen">
@@ -11,13 +17,12 @@ const ErrorPage: React.FC = () => {
         <p className="text-lg mb-2">Sorry, an unexpected error has occurred.</p>
         <p className="text-sm">
             <i>{error.statusText || error.message}</i>
-            </p>
-            <button
-                onClick={() => window.location.replace('/')}
-                className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4 inline-block hover:bg-blue-600"
-            >
-                Ir al inicio
-            </button>
+        </p>
+        <Button
+            handleClick={() => window.location.replace('/')}
+            label="Go to home"
+        />
+
 
         </div>
     );

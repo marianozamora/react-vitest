@@ -2,9 +2,9 @@ import { render, fireEvent } from '@testing-library/react';
 import SearchBar from './SearchBar';
 
 const mockPosts = [
-  { id: '1', title: 'Post 1', content: 'Content 1', likes: 0, author: '', createdAt: '', updatedAt: '', videoUrl: '', imageUrl: '' },
-  { id: '2', title: 'Post 2',content: 'Content 1', likes: 0, author: '', createdAt: '', updatedAt: '', videoUrl: '', imageUrl: '' },
-  { id: '3', title: 'Post 3', content: 'Content 1', likes: 0, author: '', createdAt: '', updatedAt: '', videoUrl: '', imageUrl: '' },
+{ id: '1', title: 'Post 1', content: 'Content 1', likes: 0, author: '', createdAt: '', updatedAt: '', videoUrl: '', imageUrl: '' },
+{ id: '2', title: 'Post 2',content: 'Content 1', likes: 0, author: '', createdAt: '', updatedAt: '', videoUrl: '', imageUrl: '' },
+{ id: '3', title: 'Post 3', content: 'Content 1', likes: 0, author: '', createdAt: '', updatedAt: '', videoUrl: '', imageUrl: '' },
 ];
 
 describe('SearchBar', () => {
