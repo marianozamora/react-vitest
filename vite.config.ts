@@ -14,7 +14,7 @@ export default defineConfig({
       provider: 'istanbul',
       exclude: ['**/node_modules/**', '**/tests/**'],
       include: ['**/src/**'],
-      reporter: ['json-summary', 'text', 'lcov'],
+      reporter: ['json-summary'],
     }
 
   }

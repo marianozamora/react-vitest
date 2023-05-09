@@ -15,7 +15,7 @@
     "preview": "vite preview",
     "test": "vitest --ui",
     "coverage": "vitest run --coverage",
-    "make-badges": "istanbul-badges-readme"
+    "generate-badges": "istanbul-badges-readme -c coverage/coverage-summary.json -b badges/"
   },
   "dependencies": {
     "react": "^18.2.0",
