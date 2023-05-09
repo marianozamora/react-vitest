@@ -12,6 +12,9 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'istanbul',
+      exclude: ['**/node_modules/**', '**/tests/**'],
+      include: ['**/src/**'],
+      reporter: ['json-summary', 'text', 'lcov'],
     }
 
   }
