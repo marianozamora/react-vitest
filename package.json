@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.0.28",
@@ -36,6 +37,7 @@
     "lorem-ipsum": "^2.0.8",
     "match-sorter": "^6.3.1",
     "postcss": "^8.4.23",
+    "react-hook-form": "^7.43.9",
     "react-router-dom": "^6.11.1",
     "sort-by": "^1.2.0",
     "tailwindcss": "^3.3.2",

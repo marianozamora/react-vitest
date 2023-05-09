@@ -24,10 +24,22 @@ export const usePostStore = create<PostState>((set, get) => ({
         set((state) => ({
             posts: state.posts.filter((p) => p !== post),
         })),
-    editPost: (post: Post) =>
+    editPost: (post: Post) => {
+        const getLocalStorage = localStorage.getItem('posts');
+        const data = getLocalStorage ? JSON.parse(getLocalStorage) : [];
+        const postIndex = data.findIndex((p: Post) => p.id === post.id);
+        data[postIndex] = post;
+        localStorage.setItem('posts', JSON.stringify(data));
+
         set((state) => ({
-            posts: state.posts.map((p) => (p.id === post.id ? post : p)),
-        })),
+            posts: state.posts.map((p) => {
+                if (p.id === post.id) {
+                    return post;
+                }
+                return p;
+            } ),
+        }));
+    },
     getPost: (id: string) => {
         const data = get();
         const post = data.posts.find((p) => p.id === id);

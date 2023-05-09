@@ -14,7 +14,6 @@ import Posts from './components/05-pages/Posts'
 import PostEdit from './components/03-components/AddPost'
 import ErrorPage from './components/05-pages/ErrorPage';
 import DetailPost from './components/05-pages/DetailPost';
-import EditPost from './components/03-components/EditPost';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,7 +26,7 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
       <Route path="posts" element={<Posts />} />
       <Route path="posts/:postId" element={<DetailPost />} />
-      <Route path="posts/edit/:postId" element={<EditPost />} />
+      <Route path="posts/edit/:postId" element={<PostEdit />} />
 
       <Route path="add-post" element={<PostEdit />} />
 

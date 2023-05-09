@@ -1,101 +1,113 @@
 /* eslint-disable no-debugger */
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { usePostStore } from '../../store/postStore';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { InputForm, TextForm } from '../01-atoms/Input';
+import Button from '../01-atoms/Button';
+import  {Post} from '../../types/interfaces';
 
-
+// interface SubmitHandler<T> {
+//     (data: T): Post;
+// }
 
 const AddPost: React.FC = () => {
     const navigate = useNavigate();
+    const { postId } = useParams<{ postId?: string }>();
+    const { reset, register, handleSubmit, formState: { errors } } = useForm<Post>();
 
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [videoUrl, setVideoUrl] = useState('');
+    const { addPost, getPost, editPost} = usePostStore();
 
-
-    const { addPost } = usePostStore();
-
-    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value);
-    };
-
-    const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setContent(event.target.value);
-    };
-
-    const handleVideoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setVideoUrl(event.target.value);
-    };
-
-    const handleSubmit = () => {
-
-        addPost({
-            title, content,
-            id: '',
-            author: '',
-            videoUrl,
-            imageUrl: '',
-            createdAt: '',
-            updatedAt: '',
-            likes: 0
-        });
-        setTitle('');
-        setContent('');
-        setVideoUrl('');
+    const onSubmit= (data:Post) => {
+        if (postId) {
+            data.updatedAt = JSON.stringify(new Date());
+            editPost(data);
+        } else {
+            data.createdAt = JSON.stringify(new Date());
+            addPost(data);
+        }
+        reset();
         navigate('/posts');
-
     };
+
+    useEffect(() => {
+        if (postId) {
+            const fetchData = async () => {
+                const data = await getPost(postId);
+                reset({ ...data });
+            };
+            fetchData();
+        }
+
+    }, []);
+
 
     return (
         <div className="my-4">
-        <h2 className="text-2xl font-bold mb-4">Add Post</h2>
-        <div className="mb-4">
-            <label htmlFor="title" className="block mb-2 font-medium">
-            Title:
-            </label>
-            <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={handleTitleChange}
-            placeholder="Enter post title"
-            className="border border-gray-300 rounded px-2 py-1 w-full"
-            />
-            </div>
-        <div className="mb-4">
-            <label htmlFor="video" className="block mb-2 font-medium">
-            Video Youtube:
-            </label>
-            <input
-            type="text"
-            id="video"
-            value={videoUrl}
-            onChange={handleVideoChange}
-            placeholder="Enter Code (Ej:TiNYoe9wilU)"
-            className="border border-gray-300 rounded px-2 py-1 w-full"
-            />
-        </div>
-        <div className="mb-4">
-            <label htmlFor="content" className="block mb-2 font-medium">
-            Content:
-            </label>
-            <textarea
-            id="content"
-            value={content}
-            onChange={handleContentChange}
-            placeholder="Enter post content"
-            rows={6}
-            className="border border-gray-300 rounded px-2 py-1 w-full"
-            ></textarea>
-        </div>
-        <button
-            onClick={handleSubmit}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-            Save
-        </button>
+            <h2 className="text-2xl font-bold mb-4">{postId ? 'Edit' : 'Add' } Post</h2>
+
+            <form >
+                <InputForm {...register('title', {
+                    required: {
+                        value: true,
+                        message: 'This field is required'
+                    }
+                }
+                )}
+                    placeholder='Title'
+                    errors={errors['title']}
+                    label="Title"
+                />
+                <InputForm {...register('videoUrl', {
+                    required: {
+                        value: true,
+                        message: 'This field is required'
+                    }
+                }
+                )}
+                    placeholder='Video Url'
+                    label="Video Url (Ej: MBVdHoRwxz8)"
+                    errors={errors['videoUrl']} />
+                <InputForm {...register('imageUrl', {
+                    required: {
+                        value: true,
+                        message: 'This field is required'
+                    }
+                }
+                )}
+                    placeholder='Image Url'
+                    label="Image Url (Ej: loremflickr.com/320/240 )"
+                    errors={errors['imageUrl']} />
+                <InputForm {...register('author', {
+                    required: {
+                        value: true,
+                        message: 'This field is required'
+                    },
+
+                }
+                )}
+                    placeholder='Author'
+                    label="Author"
+                    errors={errors['author']} />
+                <TextForm {...register('content', {
+                    required: {
+                        value: true,
+                        message: 'This field is required'
+                    }
+                }
+                )}
+                    label="Content"
+                    errors={errors['content']} />
+
+                <Button
+                    handleClick={handleSubmit(onSubmit)}
+                    type="submit"
+                    label="Save"
+                />
+            </form>
         </div>
     );
 };
 
 export default AddPost;
+TextForm

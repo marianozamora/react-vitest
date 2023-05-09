@@ -10,7 +10,6 @@ export interface Post{
     imageUrl: string;
     createdAt: string;
     updatedAt: string;
-    likes: number;
 }
 
 export interface PostParams {

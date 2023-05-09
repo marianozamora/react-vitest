@@ -2,6 +2,7 @@
 interface ButtonProps {
     handleClick: () => void;
     label: string;
+    type?: string;
 }
 export default function Button({ handleClick, label }: ButtonProps): JSX.Element {
     return (

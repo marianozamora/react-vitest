@@ -14,7 +14,6 @@ describe('usePostStore', () => {
             imageUrl: '',
             createdAt: '',
             updatedAt: '',
-            likes: 0
         });
         });
 
@@ -38,7 +37,6 @@ describe('usePostStore', () => {
             imageUrl: '',
             createdAt: '',
             updatedAt: '',
-            likes: 0
         };
         act(() => {
         result.current.addPost({
@@ -48,7 +46,6 @@ describe('usePostStore', () => {
             imageUrl: '',
             createdAt: '',
             updatedAt: '',
-            likes: 0
         });
         result.current.editPost(updatedPost);
         });
