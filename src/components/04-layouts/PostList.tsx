@@ -10,7 +10,7 @@ const PostsList: React.FC<PostsListProps> = ({ posts }) => {
         <h1 className="text-2xl font-bold mb-4">All Posts</h1>
         <ul className="grid mx-auto gap-4 p-6 grid-cols-1 md:grid-cols-3">
             {posts.map((post:PostType) => (
-            <li key={post.id}>
+            <li key={post.id} className='col-span-1 flex flex-col mx-auto'>
                     <Link
                         key={post.id}
                         to={`/posts/${post.id}`}

@@ -1,13 +1,13 @@
 import { Post as PostType } from '../../types/interfaces';
 import Image from '../01-atoms/Image';
 
-export default function Post({ title, content,author, createdAt }: PostType) {
+export default function Post({ title, content,author, imageUrl }: PostType) {
     return (
-        <div className="col-span-1 flex flex-col bg-white shadow-lg rounded-lg p-4 mb-4">
+        <div className=" bg-white shadow-lg rounded-lg p-4 mb-4">
             <Image
                 images={[
                     {
-                        url: 'https://loremflickr.com/700/640',
+                        url: `https://${imageUrl}` ,
                         width: '100%',
                     }]}
             />

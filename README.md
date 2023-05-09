@@ -1,13 +1,30 @@
 # Alto Test
 
-![Coverage](badges/coverage.svg)
+Coverage: 94.36% Statements 93.42% Functions 89.18% Branches 100%
 ![Lines](https://img.shields.io/badge/lines-94.36%25-brightgreen.svg?style=flat)
 ![Statements](https://img.shields.io/badge/statements-93.42%25-brightgreen.svg?style=flat)
+![Functions](https://img.shields.io/badge/functions-89.18%25-yellow.svg?style=flat)
+
 
 ## Getting Started
 project setup
 ```bash
 pnpm install
+```
+
+run tests
+```bash
+pnpm test
+```
+
+run dev server
+```bash
+pnpm dev
+```
+
+build for production
+```bash
+pnpm build
 ```
 
 
